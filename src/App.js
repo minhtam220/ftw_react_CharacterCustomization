@@ -1,10 +1,11 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Avatar from "./components/Avatar";
-import { useState, useEffect } from "react";
+import Section from "./components/Section";
 
 function App() {
-  const bodyURL = "images/character/";
+  const bodyURL = `images/character/`;
   const clothesURL = "images/character/clothes/";
   const accessoriesURL = "images/character/accessories/";
   const extension = ".png";
@@ -31,20 +32,25 @@ function App() {
       part === "noses" ||
       part === "eyebrows"
     ) {
-      return bodyURL + part + "/" + index + extension;
+      // eslint-disable-next-line
+      return bodyURL + part + "/" + index.toString() + extension;
     } else if (part === "clothes1") {
-      return clothesURL + "layer_1" + "/" + index + extension;
+      // eslint-disable-next-line
+      return clothesURL + "layer_1" + "/" + index.toString() + extension;
     } else if (part === "clothes2") {
-      return clothesURL + "layer_2" + "/" + index + extension;
+      // eslint-disable-next-line
+      return clothesURL + "layer_2" + "/" + index.toString() + extension;
     } else if (part === "clothes3") {
-      return clothesURL + "layer_3" + "/" + index + extension;
+      // eslint-disable-next-line
+      return clothesURL + "layer_3" + "/" + index.toString() + extension;
     } else if (
       part === "earrings" ||
       part === "glasses" ||
       part === "hats" ||
       part === "neckwear"
     ) {
-      return accessoriesURL + part + "/" + index + extension;
+      // eslint-disable-next-line
+      return accessoriesURL + part + "/" + index.toString() + extension;
     }
   };
 
@@ -82,6 +88,26 @@ function App() {
     });
   };
 
+  const handleClick = (part, index) => {
+    console.log(part === "body" ? index : selectedParts.body);
+
+    setSelectedParts({
+      body: part === "body" ? index : selectedParts.body,
+      eyes: part === "eyes" ? index : selectedParts.eyes,
+      hair: part === "hair" ? index : selectedParts.hair,
+      mouths: part === "mouths" ? index : selectedParts.mouths,
+      noses: 1,
+      eyebrows: part === "eyebrows" ? index : selectedParts.eyebrows,
+      clothes1: part === "clothes1" ? index : selectedParts.clothes1,
+      clothes2: part === "clothes2" ? index : selectedParts.clothes2,
+      clothes3: part === "clothes3" ? index : selectedParts.clothes3,
+      earrings: part === "earrings" ? index : selectedParts.earrings,
+      glasses: part === "glasses" ? index : selectedParts.glasses,
+      hats: part === "hats" ? index : selectedParts.hats,
+      neckwear: part === "neckwear" ? index : selectedParts.neckwear,
+    });
+  };
+
   return (
     <div className="App">
       <div className="title">CHARACTER</div>
@@ -100,6 +126,72 @@ function App() {
               </button>
             </div>
           </div>
+        </div>
+
+        <div>
+          <Section
+            header={"Body"}
+            part={"body"}
+            length={bodyLength}
+            handleClick={handleClick}
+            returnPartURL={returnPartURL}
+          ></Section>
+          <Section
+            header={"Eyes"}
+            part={"eyes"}
+            length={eyesLength}
+            handleClick={handleClick}
+            returnPartURL={returnPartURL}
+          ></Section>
+          <Section
+            header={"Hair"}
+            part={"hair"}
+            length={hairLength}
+            handleClick={handleClick}
+            returnPartURL={returnPartURL}
+          ></Section>
+          <Section
+            header={"Mouth"}
+            part={"mouths"}
+            length={mouthsLength}
+            handleClick={handleClick}
+            returnPartURL={returnPartURL}
+          ></Section>
+          <Section
+            header={"Eyebrows"}
+            part={"eyebrows"}
+            length={eyebrowsLength}
+            handleClick={handleClick}
+            returnPartURL={returnPartURL}
+          ></Section>
+          <Section
+            header={"Glasses"}
+            part={"glasses"}
+            length={glassesLength}
+            handleClick={handleClick}
+            returnPartURL={returnPartURL}
+          ></Section>
+          <Section
+            header={"Clothes 1"}
+            part={"clothes1"}
+            length={clothes1Length}
+            handleClick={handleClick}
+            returnPartURL={returnPartURL}
+          ></Section>
+          <Section
+            header={"Clothes 2"}
+            part={"clothes2"}
+            length={clothes2Length}
+            handleClick={handleClick}
+            returnPartURL={returnPartURL}
+          ></Section>
+          <Section
+            header={"Clothes 3"}
+            part={"clothes3"}
+            length={clothes3Length}
+            handleClick={handleClick}
+            returnPartURL={returnPartURL}
+          ></Section>
         </div>
       </div>
     </div>

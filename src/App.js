@@ -22,21 +22,6 @@ function App() {
     neckwear: 17,
   };
 
-  const bodyLength = 17;
-  const eyesLength = 24;
-  const hairLength = 73;
-  const mouthsLength = 24;
-  const eyebrowsLength = 15;
-
-  const clothes1Length = 5;
-  const clothes2Length = 5;
-  const clothes3Length = 9;
-
-  const earringsLength = 32;
-  const glassesLength = 17;
-  const hatsLength = 28;
-  const neckwearLength = 17;
-
   const [selectedParts, setSelectedParts] = useState({
     body: 1,
     eyes: 1,
@@ -61,8 +46,6 @@ function App() {
       }),
       {}
     );
-
-    console.log(random);
 
     setSelectedParts(random);
   };
@@ -91,70 +74,16 @@ function App() {
           </div>
         </div>
         <div>
-          <Section
-            header={"Body"}
-            part={"body"}
-            length={bodyLength}
-            handleClick={handleClick}
-            returnPartURL={returnPartURL}
-          ></Section>
-          <Section
-            header={"Eyes"}
-            part={"eyes"}
-            length={eyesLength}
-            handleClick={handleClick}
-            returnPartURL={returnPartURL}
-          ></Section>
-          <Section
-            header={"Hair"}
-            part={"hair"}
-            length={hairLength}
-            handleClick={handleClick}
-            returnPartURL={returnPartURL}
-          ></Section>
-          <Section
-            header={"Mouth"}
-            part={"mouths"}
-            length={mouthsLength}
-            handleClick={handleClick}
-            returnPartURL={returnPartURL}
-          ></Section>
-          <Section
-            header={"Eyebrows"}
-            part={"eyebrows"}
-            length={eyebrowsLength}
-            handleClick={handleClick}
-            returnPartURL={returnPartURL}
-          ></Section>
-          <Section
-            header={"Glasses"}
-            part={"glasses"}
-            length={glassesLength}
-            handleClick={handleClick}
-            returnPartURL={returnPartURL}
-          ></Section>
-
-          <Section
-            header={"Clothes 1"}
-            part={"clothes1"}
-            length={clothes1Length}
-            handleClick={handleClick}
-            returnPartURL={returnPartURL}
-          ></Section>
-          <Section
-            header={"Clothes 2"}
-            part={"clothes2"}
-            length={clothes2Length}
-            handleClick={handleClick}
-            returnPartURL={returnPartURL}
-          ></Section>
-          <Section
-            header={"Clothes 3"}
-            part={"clothes3"}
-            length={clothes3Length}
-            handleClick={handleClick}
-            returnPartURL={returnPartURL}
-          ></Section>
+          {Object.keys(lengths).map((item) => (
+            <Section
+              key={item}
+              header={item}
+              part={item}
+              length={lengths[item]}
+              handleClick={handleClick}
+              returnPartURL={returnPartURL}
+            ></Section>
+          ))}
         </div>
       </div>
     </div>

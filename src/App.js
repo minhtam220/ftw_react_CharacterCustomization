@@ -22,6 +22,22 @@ function App() {
     neckwear: 17,
   };
 
+  const zIndices = {
+    body: 0,
+    eyes: 1,
+    hair: 6,
+    mouths: 4,
+    noses: 4,
+    eyebrows: 4,
+    clothes1: 2,
+    clothes2: 3,
+    clothes3: 4,
+    earrings: 5,
+    glasses: 5,
+    hats: 5,
+    neckwear: 5,
+  };
+
   const [selectedParts, setSelectedParts] = useState({
     body: 1,
     eyes: 1,
@@ -63,6 +79,7 @@ function App() {
         <div>
           <div className="avatar-wrapper">
             <Avatar
+              zIndices={zIndices}
               selectedParts={selectedParts}
               returnPartURL={returnPartURL}
             ></Avatar>

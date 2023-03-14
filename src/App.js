@@ -6,20 +6,38 @@ import Section from "./components/Section";
 import { returnPartURL } from "./utils";
 
 function App() {
+  const lengths = {
+    body: 17,
+    eyes: 24,
+    hair: 73,
+    mouths: 24,
+    noses: 1,
+    eyebrows: 15,
+    clothes1: 5,
+    clothes2: 5,
+    clothes3: 9,
+    earrings: 32,
+    glasses: 17,
+    hats: 28,
+    neckwear: 17,
+  };
+
   const bodyLength = 17;
   const eyesLength = 24;
   const hairLength = 73;
   const mouthsLength = 24;
   const eyebrowsLength = 15;
+
   const clothes1Length = 5;
   const clothes2Length = 5;
   const clothes3Length = 9;
+
   const earringsLength = 32;
   const glassesLength = 17;
   const hatsLength = 28;
   const neckwearLength = 17;
 
-  let [selectedParts, setSelectedParts] = useState({
+  const [selectedParts, setSelectedParts] = useState({
     body: 1,
     eyes: 1,
     hair: 1,
@@ -54,23 +72,7 @@ function App() {
   };
 
   const handleClick = (part, index) => {
-    console.log(part === "body" ? index : selectedParts.body);
-
-    setSelectedParts({
-      body: part === "body" ? index : selectedParts.body,
-      eyes: part === "eyes" ? index : selectedParts.eyes,
-      hair: part === "hair" ? index : selectedParts.hair,
-      mouths: part === "mouths" ? index : selectedParts.mouths,
-      noses: 1,
-      eyebrows: part === "eyebrows" ? index : selectedParts.eyebrows,
-      clothes1: part === "clothes1" ? index : selectedParts.clothes1,
-      clothes2: part === "clothes2" ? index : selectedParts.clothes2,
-      clothes3: part === "clothes3" ? index : selectedParts.clothes3,
-      earrings: part === "earrings" ? index : selectedParts.earrings,
-      glasses: part === "glasses" ? index : selectedParts.glasses,
-      hats: part === "hats" ? index : selectedParts.hats,
-      neckwear: part === "neckwear" ? index : selectedParts.neckwear,
-    });
+    setSelectedParts({ ...selectedParts, [part]: index });
   };
 
   return (
@@ -135,6 +137,7 @@ function App() {
             handleClick={handleClick}
             returnPartURL={returnPartURL}
           ></Section>
+
           <Section
             header={"Clothes 1"}
             part={"clothes1"}

@@ -54,21 +54,17 @@ function App() {
   });
 
   const handleRandomize = () => {
-    setSelectedParts({
-      body: Math.floor(Math.random() * bodyLength),
-      eyes: Math.floor(Math.random() * eyesLength),
-      hair: Math.floor(Math.random() * hairLength),
-      mouths: Math.floor(Math.random() * mouthsLength),
-      noses: 1,
-      eyebrows: Math.floor(Math.random() * eyebrowsLength),
-      clothes1: Math.floor(Math.random() * clothes1Length),
-      clothes2: Math.floor(Math.random() * clothes2Length),
-      clothes3: Math.floor(Math.random() * clothes3Length),
-      earrings: Math.floor(Math.random() * earringsLength),
-      glasses: Math.floor(Math.random() * glassesLength),
-      hats: Math.floor(Math.random() * hatsLength),
-      neckwear: Math.floor(Math.random() * neckwearLength),
-    });
+    const random = Object.keys(lengths).reduce(
+      (acc, cur) => ({
+        ...acc,
+        [cur]: Math.floor(Math.random() * lengths[cur]),
+      }),
+      {}
+    );
+
+    console.log(random);
+
+    setSelectedParts(random);
   };
 
   const handleClick = (part, index) => {
